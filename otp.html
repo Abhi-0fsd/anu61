@@ -1,0 +1,17 @@
+<input id="ph" placeholder="+91XXXXXXXXXX">
+<button onclick="sendOtp()">Send OTP</button>
+
+<script>
+async function sendOtp() {
+  const phone = document.getElementById("ph").value;
+
+  const res = await fetch("http://localhost:8080/otp/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ phoneNumber: phone })
+  });
+
+  const text = await res.text();
+  alert(text);
+}
+</script>

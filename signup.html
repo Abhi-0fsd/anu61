@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OTP Verification</title>
+
+  <style>
+    body { font-family: Arial; padding: 30px; background:#eef2ff }
+    .box {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background:white;
+      border-radius:10px;
+      box-shadow:0 3px 10px rgba(0,0,0,.2)
+    }
+    input, button {
+      width:100%;
+      margin-top:10px;
+      padding:10px;
+      border-radius:6px;
+      border:1px solid #ccc;
+      font-size:15px;
+    }
+    button { background:#6a0dad; color:white; border:none; cursor:pointer }
+    button:hover { background:#520c9b }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h2>Send OTP</h2>
+
+  <input id="phone" placeholder="+91XXXXXXXXXX">
+
+  <button onclick="sendOtp()">Send OTP</button>
+
+  <input id="otp" placeholder="Enter OTP">
+
+  <button onclick="verifyOtp()">Verify OTP</button>
+
+</div>
+
+
+<script>
+
+function sendOtp() {
+
+  const phone = document.getElementById("phone").value;
+
+  fetch("http://localhost:8080/otp/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phoneNumber: phone   // 👈 MUST MATCH DTO FIELD NAME
+    })
+  })
+  .then(r => r.text())
+  .then(msg => alert(msg))
+  .catch(e => alert("OTP send failed — check backend console"));
+}
+
+
+function verifyOtp() {
+
+  const phone = document.getElementById("phone").value;
+  const otp = document.getElementById("otp").value;
+
+  fetch("http://localhost:8080/otp/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phoneNumber: phone,   // 👈 SAME FIELD
+      otp: otp
+    })
+  })
+  .then(r => r.text())
+  .then(msg => alert(msg))
+  .catch(e => alert("OTP verification failed"));
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter Keychain</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body{
+      font-family: Arial;
+      background:#fff;
+      margin:0;
+      padding:30px;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      display:flex;
+      gap:30px;
+
+    }
+
+    .main-img img{
+      width:580px;
+      border-radius:20px;
+      margin-left: 10px;
+    }
+
+    .right{ flex:1; }
+
+    .product-name{
+      font-size:40px;
+      font-weight:bold;
+      margin-bottom: 12px;
+      margin-left: 60px;
+    }
+
+    .final-price{
+      font-size:40px;
+      color:green;
+      font-weight:bold;
+      margin-bottom: 10px;
+      margin-left: 80px;
+    }
+
+    .mrp-text{
+      font-size:22px;
+      color:gray;
+      margin-top:0;
+      margin-left: 80px;
+    }
+
+    .mrp-only{
+      text-decoration: line-through;
+      color:gray;
+     
+    }
+
+    .offer-line{
+      color:red;
+      font-weight:bold;
+      margin-left:20px;
+      font-size:20px;
+    }
+
+    /* ⭐ FEATURES — NO DOTS, ONLY ✓ ⭐ */
+    .features{
+      margin:20px 0;
+      font-size:18px;
+      line-height:1.8;
+      list-style:none;   /* removes dots */
+      padding-left:0; 
+      margin-left: 80px;   /* removes indent */
+    }
+
+    button{
+      display:inline-block;
+      width:180px;
+      padding:14px;
+      font-size:16px;
+      border:none;
+      border-radius:10px;
+      color:#fff;
+      cursor:pointer;
+      text-align:center;
+      margin-bottom:12px;
+      margin-left: 80px;
+    }
+
+    .buy{ background:#ff9800; }
+    .cart{ background:#1ec542; }
+    
+/* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="main-img">
+    <img id="mainImage" src="">
+  </div>
+
+  <div class="right">
+
+    <div class="product-name" id="pname"></div>
+
+    <div class="final-price">
+      ₹<span id="sell"></span>
+    </div>
+
+    <div class="mrp-text">
+      <span class="mrp-only">₹<span id="mrp"></span></span>
+      <span class="offer-line">( <span id="offer"></span> OFF )</span>
+    </div>
+
+    <ul class="features" id="featureList"></ul>
+
+    <a href="am1.html"><button class="buy">Buy Now</button></a><br><br>
+    <a href="cart.html"><button class="cart">Add to Cart</button></a>
+
+  </div>
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+
+
+<script>
+  const product = {
+    name:"Letter Keychain",
+    mrp:25,
+    price:19,
+    features:[
+      "Matte Finish",
+      "Long Lasting",
+      "Natural Look"
+    ],
+    images:[
+      "https://i.postimg.cc/8PtjFrN2/Whats-App-Image-2025-11-13-at-17-21-01-f874ea59.jpg"
+    ]
+  };
+
+  document.getElementById("pname").textContent = product.name;
+  document.getElementById("sell").textContent = product.price;
+  document.getElementById("mrp").textContent = product.mrp;
+
+  let off = Math.round(((product.mrp-product.price)/product.mrp)*100);
+  document.getElementById("offer").textContent = off+"%";
+
+  document.getElementById("mainImage").src = product.images[0];
+
+  let list = document.getElementById("featureList");
+  product.features.forEach(f=>{
+    let li = document.createElement("li");
+    li.textContent = "✓ " + f;   // only tick — no dot
+    list.appendChild(li);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Details</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+  margin:0;
+}
+
+/* WHITE FULL-WIDTH PAPER */
+.page-wrapper{
+  width:100%;
+  min-height:100vh;
+  margin:0;
+  background:#fff;
+  padding:60px 40px;
+  box-sizing:border-box;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* TWO COLUMN LAYOUT */
+.container{
+  max-width:1600px;
+  margin:auto;
+  display:flex;
+  gap:80px;
+  align-items:center;
+}
+
+/* BIG IMAGE */
+.image-box img{
+  width:100%;
+  max-width:750px;
+  border-radius:22px;
+}
+
+/* RIGHT SIDE WIDER BOX */
+.text-box{
+  max-width:700px;   /* 👈 Increased */
+}
+
+/* TITLE */
+.text-box h1{
+  font-size:42px;   /* 👈 Slightly bigger */
+  margin-bottom:10px;
+}
+
+/* SELL PRICE */
+.sell{
+  color:green;
+  font-weight:bold;
+  font-size:42px;   /* 👈 Bigger */
+}
+
+/* MRP + DISCOUNT */
+.price-line{
+  font-size:20px;
+  margin-top:5px;
+}
+
+.price-line del{
+  color:gray;
+  margin-right:10px;
+}
+
+.off{
+  color:red;
+  font-weight:bold;
+  font-size:22px;
+}
+
+/* FEATURES */
+.features{
+  margin:25px 0;
+  font-size:20px;
+  line-height:1.9;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.buttons a button{
+  width:210px;   /* 👈 wider */
+  padding:14px 0;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  color:white;
+  cursor:pointer;
+}
+
+.buy{ background:#ff9900; }
+.cart{ background:#1ec34d; }
+/* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .container{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .image-box img{
+    max-width:100%;
+  }
+
+  .text-box{
+    max-width:100%;
+  }
+
+  .buttons{
+    align-items:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+  <div class="container">
+
+    <div class="image-box">
+      <img src="https://i.postimg.cc/jjvL5yK0/Whats-App-Image-2025-11-07-at-10-54-50-03bd0c20.jpg">
+    </div>
+
+    <div class="text-box">
+      
+      <h1>Birthday Frame</h1>
+
+      <div class="sell">
+        ₹<span id="finalPrice"></span>
+      </div>
+
+      <div class="price-line">
+        <del>₹<span id="mrpPrice"></span></del>
+        <span class="off">( <span id="discountText"></span>% OFF )</span>
+      </div>
+
+      <div class="features">
+        ✓ Perfect for Couples & Gifts<br>
+        ✓ Beautiful Warm Lighting<br>
+        ✓ Engraved Forever Memory
+      </div>
+
+      <div class="buttons">
+        <a href="am7.html">
+          <button class="buy">Buy Now</button>
+        </a>
+
+        <a href="cart.html">
+          <button class="cart">Add to Cart</button>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+<script>
+let mrp = 1000;
+let discount = 25;
+let final = Math.round(mrp - (mrp * discount / 100));
+
+document.getElementById("mrpPrice").innerText = mrp;
+document.getElementById("discountText").innerText = discount;
+document.getElementById("finalPrice").innerText = final;
+</script>
+
+</body>
+</html>

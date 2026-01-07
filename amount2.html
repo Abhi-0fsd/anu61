@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter Keychain</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      margin:20px;
+    }
+
+    .container{
+      display:flex;
+      max-width:900px;
+      margin:auto;
+      gap:30px;
+      align-items:flex-start;
+    }
+
+    .left img{
+      width:580px;
+      border-radius:20px;
+      margin-left:10px;
+    }
+
+    .right{
+      flex:1;
+    }
+
+    h1{
+      font-size:40px;
+      font-weight:700;
+      margin-bottom:5px;
+      margin-left: 60px;
+    }
+
+    /* FINAL PRICE TOP */
+    .sell-top{
+      font-size:40px;
+      font-weight:bold;
+      color:green;
+      margin:8px 0;
+      margin-left: 80px;
+    }
+
+    /* STRIKE + DISCOUNT SAME LINE */
+    .price-line{
+      font-size:20px;
+      margin-top:0;
+      margin-left: 80px;
+    }
+
+    .old{
+      text-decoration:line-through;
+      color:gray;
+    }
+
+    .off{
+ color:red;
+      font-weight:bold;
+      margin-left:20px;
+     font-size:20px;
+    }
+
+    /* FEATURES */
+    .features{
+      margin-top:12px;
+      list-style:none;
+      padding-left:0;
+      font-size:18px;
+      line-height:28px;
+    }
+
+    .features li{
+      margin-bottom:2px;
+      margin-left: 80px;
+    }
+
+    button{
+      display:inline-block;
+  width:180px;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  margin-bottom:12px;
+  margin-left: 80px;
+    }
+
+    .buy{
+      background:#ff9800;
+    }
+
+    .cart{
+      background:#07c246;
+    }
+    /* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="left">
+    <img src="https://i.postimg.cc/Y0v1FPFv/IMG-20251228-214639.jpg">
+  </div>
+
+  <div class="right">
+
+    <h1>TwinVibe Keychain</h1>
+
+    <!-- FINAL PRICE TOP -->
+    <div class="sell-top">₹<span id="sellPrice"></span></div>
+
+    <!-- STRIKE + DISCOUNT SAME LINE -->
+    <p class="price-line">
+      <span class="old">₹<span id="mrpPrice"></span></span>
+      <span class="off">( <span id="offPercent"></span>% OFF )</span>
+    </p>
+
+    <!-- FEATURES WITH TICK -->
+    <ul class="features" id="featureList"></ul>
+
+    <button class="buy" onclick="buyNow()">Buy Now</button><br><br>
+    <button class="cart" onclick="addToCart()">Add to Cart</button>
+
+  </div>
+
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+<script>
+  let mrp = 70;
+  let sell = 49;
+
+  document.getElementById("mrpPrice").textContent = mrp;
+  document.getElementById("sellPrice").textContent = sell;
+
+  let off = Math.round(((mrp - sell) / mrp) * 100);
+  document.getElementById("offPercent").textContent = off;
+
+  // FEATURES
+  let features = [
+    "Matte Finish",
+    "Long Lasting",
+    "Natural Look"
+  ];
+
+  let list = document.getElementById("featureList");
+
+  features.forEach(f=>{
+    let li = document.createElement("li");
+    li.textContent = "✓ " + f;
+    list.appendChild(li);
+  });
+
+  // BUTTON ACTIONS
+  function buyNow(){
+    window.location.href = "am2.html";
+  }
+
+  function addToCart(){
+    window.location.href = "cart.html";
+  }
+</script>
+
+</body>
+</html>

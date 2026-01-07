@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cat Toy</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#ffffff;
+  margin:20px;
+}
+
+.container{
+  display:flex;
+  max-width:1000px;
+  margin:auto;
+  gap:40px;
+}
+
+.left img{
+  width:580px;
+  border-radius:25px;
+  margin-left: 10px;
+}
+
+.right{
+  flex:1;
+}
+
+h1{
+  font-size:40px;
+      font-weight:700;
+      margin-bottom:5px;
+      margin-left: 60px;
+}
+
+/* PRICE */
+.final-price{
+  font-size:40px;
+  font-weight:bold;
+  color:green;
+   margin-left: 80px;
+}
+
+.price-line{
+  margin-top:5px;
+  font-size:20px;
+}
+
+.old-price{
+  color:gray;
+  text-decoration:line-through;
+  margin-right:10px;
+   margin-left: 80px;
+}
+
+.discount{
+    color:red;
+      font-weight:bold;
+      margin-left:20px;
+     font-size:20px;
+}
+
+/* DESCRIPTION */
+.desc{
+  margin:20px 0;
+  font-size:18px;
+  line-height:1.8;
+   margin-left: 80px;
+
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:220px;
+}
+
+.buttons a{
+  width:100%;
+  text-decoration:none;
+}
+
+button{
+  padding:14px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  width:100%;    
+   
+    margin-left: 80px;
+}
+
+.buy{ background:orange; }
+.cart{ background:green; }
+
+button:hover{ opacity:0.9; }
+/* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT IMAGE -->
+  <div class="left">
+    <img src="https://i.postimg.cc/JzQV7b8P/Whats-App-Image-2025-11-13-at-17-42-54-00c64266.jpg" alt="Cat Toy">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="right">
+    <h1>Cat Toy</h1><br>
+
+    <!-- PRICE -->
+    <div class="final-price">₹<span id="finalPrice"></span></div>
+
+    <div class="price-line">
+      <span class="old-price">₹250</span>
+      <span class="discount">(40% OFF)</span>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="desc">
+      ✓ Perfect for Couples & Gifts<br>
+      ✓ Beautiful Warm Lighting<br>
+      ✓ Engraved Forever Memory
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+      <a href="am12.html"><button class="buy">Buy Now</button></a><br>
+      <a href="cart.html"><button class="cart">Add to Cart</button></a>
+    </div>
+  </div>
+
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+<script>
+  const mrp = 250;
+  const discount = 40;
+
+  const finalPrice = Math.round(mrp - (mrp * discount / 100));
+  document.getElementById("finalPrice").innerText = finalPrice;
+</script>
+
+</body>
+</html>

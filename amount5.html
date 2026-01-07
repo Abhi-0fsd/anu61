@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unicorn Keychain</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body{
+      font-family:sans-serif;
+      margin:20px;
+      padding:20px;
+      background:#fefefe;
+    }
+    
+
+    .container{
+      display:flex;
+      max-width:900px;
+      margin:auto;
+      gap:30px;
+    }
+
+    .left img{
+     width:480px;
+      border-radius:20px;
+      margin-left:10px;
+    }
+
+    .right{
+      flex:1;
+    }
+
+    h1{
+     font-size:40px;
+      font-weight:700;
+      margin-bottom:5px;
+      margin-left: 60px;
+    }
+
+    /* MAIN PRICE LINE ONLY */
+    .price-top{
+      font-size:40px;
+      color:green;
+      font-weight:bold;
+      margin-top:5px;
+        margin-left: 80px;
+    }
+
+    /* SECOND LINE — STRIKE + DISCOUNT */
+    .price-bottom{
+      font-size:18px;
+      margin-top:3px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+        margin-left: 80px;
+
+    }
+
+    .old{
+      color:#777;
+      text-decoration:line-through;
+    }
+
+    .discount{
+       color:red;
+      font-weight:bold;
+      margin-left:20px;
+     font-size:20px;
+    }
+
+    /* FEATURES LIST */
+    .features{
+      margin-top:12px;
+      font-size:17px;
+      list-style:none;
+      padding-left:0;
+      line-height:28px;
+        margin-left: 80px;
+    }
+
+    .features li::before{
+      content:"✓ ";
+      color:green;
+      font-weight:bold;
+    }
+
+    /* BUTTONS — STACKED */
+    .buttons{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+      max-width:200px;
+    }
+
+    .buttons a{
+      display:inline-block;
+  width:180px;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  margin-bottom:12px;
+    margin-left: 80px;
+}
+
+    .buy{ background:orange; }
+    .cart{ background:green; }
+    /* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="left">
+    <img src="https://i.postimg.cc/d17n7YHx/Whats-App-Image-2025-11-11-at-21-44-54-bf83779a.jpg">
+  </div>
+
+  <div class="right">
+
+    <h1>Unicorn Keychain</h1>
+
+    <!-- LINE 1 — ONLY CURRENT PRICE -->
+    <div class="price-top">
+      ₹<span id="current-price">0</span>
+    </div>
+
+    <!-- LINE 2 — STRIKE + DISCOUNT -->
+    <div class="price-bottom">
+      <span class="old">₹<span id="old-price">0</span></span>
+      <span class="discount">(<span id="discount">0</span>% OFF)</span>
+    </div>
+
+    <!-- FEATURES -->
+    <ul class="features" id="features"></ul>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+      <a href="am5.html" class="buy">Buy Now</a><br>
+      <a href="cart.html" class="cart">Add to Cart</a>
+    </div>
+
+  </div>
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+<script>
+  // ⭐ CHANGE ONLY THESE ⭐
+  let mrp = 70;
+  let current = 49;
+  let featureList = ["Matte Finish","Long Lasting","Natural Look"];
+
+  // ---- CALCULATE DISCOUNT ----
+  const discountPercent = Math.round(((mrp - current) / mrp) * 100);
+
+  // ---- UPDATE UI ----
+  document.getElementById("old-price").textContent = mrp;
+  document.getElementById("current-price").textContent = current;
+  document.getElementById("discount").textContent = discountPercent;
+
+  // ---- FEATURES WITH TICK ----
+  let ul = document.getElementById("features");
+  featureList.forEach(f=>{
+    let li = document.createElement("li");
+    li.textContent = f;
+    ul.appendChild(li);
+  });
+</script>
+
+</body>
+</html>

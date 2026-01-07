@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Name Tag Keychain</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      padding: 29px;
+      background-color: #fefefe;
+    }
+
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: auto;
+      gap: 30px;
+    }
+
+    .left img {
+      width: 580px;
+      border-radius: 20px;
+      margin-left: 10px;
+    }
+
+    .right {
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      margin-left: 60px;
+    }
+
+    /* BIG GREEN PRICE TOP */
+    .big-price{
+      font-size: 40px;
+      font-weight: 700;
+      color: green;
+      margin: 10px 0 3px 0;
+      margin-left: 80px;
+    }
+
+    /* STRIKE + DISCOUNT SAME LINE */
+    .price-line{
+      font-size: 20px;
+      margin-top: 0;
+      margin-left: 80px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      margin-left: 6px;
+    }
+
+    .off {
+       color:red;
+      font-weight:bold;
+      margin-left:20px;
+     font-size:20px;
+    }
+
+    /* SAVE TEXT */
+    .save {
+      font-size: 16px;
+      color: #e53935;
+      margin-top: 5px;
+    }
+
+    /* FEATURES */
+    .features{
+      margin-top: 12px;
+      list-style: none;
+      padding-left: 0;
+      font-size: 17px;
+      line-height: 26px;
+      margin-left: 80px;
+    }
+
+    .features li{
+      margin-bottom: 3px;
+    }
+
+    button {
+     display:inline-block;
+  width:180px;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  margin-bottom:12px;
+  margin-left: 80px;
+    }
+
+    .buy {
+      background-color: #ff9800;
+    }
+
+    .cart {
+      background-color: #22c55e;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+    /* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="left">
+    <img src="https://i.postimg.cc/QdMQBmwt/Whats-App-Image-2025-11-11-at-21-44-53-fcc15956.jpg">
+  </div>
+
+  <div class="right">
+
+    <h1>Name Stand</h1><br>
+
+    <!-- BIG PRICE -->
+    <div class="big-price">₹<span id="sell"></span></div>
+
+    <!-- STRIKE + DISCOUNT SAME LINE -->
+    <p class="price-line">
+      <span class="old-price">₹<span id="mrp"></span></span>
+      <span class="off">(<span id="off"></span>% OFF)</span>
+    </p>
+
+    <!-- SAVE TEXT -->
+    <div class="save" id="saveText"></div>
+
+    <!-- FEATURES WITH TICK -->
+    <ul class="features" id="featureList"></ul>
+
+    <button class="buy" onclick="buyNow()">Buy Now</button><br><br>
+    <button class="cart" onclick="addToCart()">Add to Cart</button>
+
+  </div>
+</div>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+
+   
+<script>
+  let mrp = 300;
+  let sell = 198;
+
+  document.getElementById("mrp").textContent = mrp;
+  document.getElementById("sell").textContent = sell;
+
+  let off = Math.round(((mrp - sell) / mrp) * 100);
+  document.getElementById("off").textContent = off;
+
+
+  // FEATURES LIST
+  let features = [
+    "Matte Finish",
+    "Long Lasting",
+    "Natural Look"
+  ];
+
+  let list = document.getElementById("featureList");
+  features.forEach(f=>{
+    let li = document.createElement("li");
+    li.textContent = "✓ " + f;
+    list.appendChild(li);
+  });
+
+  function buyNow(){
+    window.location.href = "am4.html";
+  }
+
+  function addToCart(){
+    window.location.href = "cart.html";
+  }
+</script>
+
+</body>
+</html>

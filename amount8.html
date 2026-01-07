@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designer Photo Frame – Product Details</title>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#eef6ff;
+}
+
+.page-wrapper{
+  max-width:1800px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.container{
+  display:flex;
+  gap:35px;
+}
+
+.left-section{
+  display:flex;
+  gap:18px;
+  width:55%;
+}
+
+.thumb-column{
+  width:180px;
+  display:flex;
+  flex-direction:column;
+  gap:38px;
+  margin-left:40px;
+}
+
+.thumb, .video-thumb video{
+  width:100%;
+  height:140px;
+  border-radius:12px;
+  object-fit:cover;
+  cursor:pointer;
+  border:2px solid transparent;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);
+  transition:.3s;
+}
+
+.thumb:hover,
+.thumb.active,
+.video-thumb.active video{
+  border-color:#0099ff;
+  transform:scale(1.05);
+}
+
+.main-media{
+  width:92%;
+  height:800px;
+  border-radius:18px;
+  margin-left:80px;
+  box-shadow:10px 5px 15px rgba(0,0,0,.2);
+  object-fit:cover;
+}
+
+.video-thumb{
+  position:relative;
+  cursor:pointer;
+}
+
+.play-icon{
+  position:absolute;
+  top:40px;
+  left:40px;
+  width:40px;
+  height:40px;
+  background:rgba(0,0,0,0.55);
+  border-radius:50%;
+  color:#fff;
+  text-align:center;
+  line-height:40px;
+  font-size:22px;
+  pointer-events:none;
+  
+}
+
+.right{ flex:5; }
+
+.product-title{
+  font-size:50px;
+  font-weight:bold;
+  margin-left: 70px;
+}
+
+.final-price{
+  font-size:40px;
+  font-weight:700;
+  color:#0b8a0b;
+  margin-bottom:9px;
+  margin-left: 90px;
+}
+
+.sub-price-line{
+  margin-top:2px;
+  font-size:25px;
+   margin-left: 90px;
+}
+
+
+.old-price{
+  text-decoration:line-through;
+  color:#777;
+   
+}
+
+
+.discount{
+  color:red;
+  font-weight:bold;
+  margin-left:20px;
+  font-size:20px;
+  
+}
+
+
+.features{
+  margin:20px 0;
+  font-size:18px;
+  line-height:1.8;
+   margin-left: 90px;
+}
+
+
+.button{
+  display:inline-block;
+  width:180px;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  margin-bottom:12px;
+   margin-left: 90px;
+}
+
+
+.buy{ background:#ff9800; }
+.cart{ background:#1fbf4a; }
+/* FOOTER NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f5dc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #ac1896;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+@media(max-width:768px){
+  .container{ flex-direction:column; }
+  .left-section{ width:100%; flex-direction:column; align-items:center; }
+  .thumb-column{ flex-direction:row; width:100%; overflow-x:auto; }
+  .thumb, .video-thumb video{ width:70px; height:90px; }
+  .main-media{ width:100%; margin-left:0; height:auto; }
+}
+</style>
+<footer>
+ <div class="bottom-nav">
+
+    <a href="product.html">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+
+    <a href="search.html">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </a>
+
+    <a href="signup.html">
+      <i class="fa-solid fa-user"></i>
+      Profile
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart
+    </a>
+
+    <a href="contacts.html">
+      <i class="fa-solid fa-headset"></i>
+      Help
+    </a>
+
+  </div>
+</footer>
+<script>
+const videoEmbed = "https://player.vimeo.com/video/1151199350";
+
+function changeImg(src, isVideo = false, event = null) {
+  const box = document.getElementById("mainBox");
+
+  if (isVideo) {
+    box.innerHTML = `
+      <iframe 
+        src="${videoEmbed}?autoplay=1&muted=1"
+        class="main-media"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+    `;
+  } else {
+    box.innerHTML = `<img src="${src}" class="main-media">`;
+  }
+
+  document.querySelectorAll(".thumb, .video-thumb").forEach(t => t.classList.remove("active"));
+  if (event) event.currentTarget.classList.add("active");
+}
+
+const productData = { name: "Wood Engraved Frame", mrp: 600, current: 450 };
+const discountPercent = Math.round(((productData.mrp - productData.current) / productData.mrp) * 100);
+
+window.onload = () => {
+  document.getElementById("title").textContent = productData.name;
+  document.getElementById("current").textContent = productData.current;
+  document.getElementById("mrp").textContent = productData.mrp;
+  document.getElementById("discount").textContent = discountPercent;
+}
+</script>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="left-section">
+
+      <div class="thumb-column">
+        <img class="thumb active" src="https://i.postimg.cc/43XqNgLz/Whats-App-Image-2025-11-07-at-08-53-58-6ab0890f.jpg" onclick="changeImg(this.src,false,event)">
+        <img class="thumb" src="https://i.postimg.cc/90CCBqxy/P5.jpg" onclick="changeImg(this.src,false,event)">
+        <img class="thumb" src="https://i.postimg.cc/Hxdw7ZqR/Whats-App-Image-2025-12-26-at-5-06-17-PM.jpg" onclick="changeImg(this.src,false,event)">
+        <img class="thumb" src="https://i.postimg.cc/v81BtLGS/Whats-App-Image-2025-12-26-at-5-01-55-PM.jpg" onclick="changeImg(this.src,false,event)">
+
+        <div class="video-thumb" onclick="changeImg('', true, event)">
+          <img src="https://i.postimg.cc/65hTFBnL/P4.jpg" class="thumb">
+          <div class="play-icon">▶</div>
+        </div>
+      </div>
+
+      <div style="flex:1" id="mainBox">
+        <img src="https://i.postimg.cc/43XqNgLz/Whats-App-Image-2025-11-07-at-08-53-58-6ab0890f.jpg" class="main-media">
+      </div>
+    </div>
+
+    <div class="right">
+      <h2 class="product-title" id="title"></h2>
+
+      <div class="final-price">₹<span id="current"></span></div>
+
+      <div class="sub-price-line">
+        <span class="old-price">₹<span id="mrp"></span></span>
+        <span class="discount">( <span id="discount"></span>% OFF )</span>
+      </div>
+
+      <p class="features">
+        ✓ Perfect for Couples & Gifts<br>
+        ✓ Beautiful Warm Lighting<br>
+        ✓ Engraved Forever Memory
+      </p>
+
+      <a href="am8.html" class="button buy">Buy Now</a><br><br>
+      <a href="cart.html" class="button cart">Add to Cart</a><br><br>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
